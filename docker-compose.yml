@@ -6,4 +6,12 @@ services:
     volumes:
       - .:/site
     ports:
-      - '80:4000'
+      - '4000:4000'
+    environment:
+      - VIRTUAL_HOST=ravil.space
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
